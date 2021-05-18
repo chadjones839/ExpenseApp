@@ -6,25 +6,8 @@ const ExpenseForm = (props) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
 
-  /* SINGLE STATE*/ 
-  // const [userInput, setUserInput] = useState({
-  //   title: '',
-  //   amount: '',
-  //   date: ''
-  // })
-
   const titleChangeHandler = (e) => {
     setTitle(e.target.value)
-    /* SINGLE STATE CHANGE - this method may not always capture the latest state */
-    // setUserInput({
-    //   ...userInput,
-    //   title: e.target.value
-    // });
-
-    /* SINGLE STATE CHANGE - this method will always capture latest state */
-    // setUserInput((prevState) => {
-    //   return { ...prevState, title: e.target.value };
-    // })
   }
 
   const amountChangeHandler = (e) => {
@@ -48,9 +31,9 @@ const ExpenseForm = (props) => {
     setTitle('');
     setAmount('');
     setDate('');
+
   }
 
-  // A button with a type "submit" is pressed inside a form, the form element emits the event
   return (
       <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
@@ -81,6 +64,7 @@ const ExpenseForm = (props) => {
           </div>
         </div>
         <div className="new-expense__actions">
+          <button type="button" onClick={props.onCancel}>Cancel</button>
           <button type="submit">Add Expense</button>
         </div>
       </form>
